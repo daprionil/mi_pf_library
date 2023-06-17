@@ -10,16 +10,17 @@ const cors = require('cors');
 //* Get DB from file
 const {db} = require('./src/db.js');
 
-//* Get server from file
+//* Get data in local
 const server = require('./src/server.js');
 const rootRouter = require('./src/routes/rootRouter.js');
 const port = process.env.PORT || 4001;
+const generateIdUUID = require('./src/utils/generateIdUUID.js');
 
 //! Middlewares
 server.use(morgan('dev'));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }))
-server.use(cors);
+server.use(cors());
 
 
 //* Routes

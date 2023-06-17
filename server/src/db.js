@@ -4,6 +4,7 @@ const {Sequelize} = require('sequelize');
 const gistDb = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 
 const db = new Sequelize.Sequelize(gistDb,{logging:false});
+
 //Models
 //Relations
 
