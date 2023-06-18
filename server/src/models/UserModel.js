@@ -1,5 +1,5 @@
-const { DataTypes } = require("sequelize")
-const generateIdUUID = require("../utils/generateIdUUID")
+const { DataTypes } = require("sequelize");
+const generateIdUUID = require("../utils/generateIdUUID");
 
 module.exports = function(database){
     database.define('User',{
@@ -9,7 +9,7 @@ module.exports = function(database){
             primaryKey:true,
             set(value){
                 //! Clear THIS validation
-                this.setDataValue('IdUser', generateIdUUID());
+                this.setDataValue('IdUser', value ? value : generateIdUUID());
             }
         },
         name:{
@@ -36,11 +36,11 @@ module.exports = function(database){
             }
         },
         phoneNumber:{
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING(15),
             allowNull:false,
             unique:true,
             validate:{
-                max:13,
+                len:[0,13],
                 isInt:true
             }
         },
@@ -52,8 +52,6 @@ module.exports = function(database){
                 isBefore: new Date().toISOString()
             }
         },
-        //Asociation with Selling model
-        //Asociation with Book model
         image:{
             type: DataTypes.TEXT,
             allowNull: false,
@@ -62,13 +60,20 @@ module.exports = function(database){
                 isUrl: true
             }
         },
-        countryUser:{//HIDE IN VIEW
+        countryUser:{
+            //? Association with Country in relationsModels.js 1:N
             type: DataTypes.INTEGER,
             allowNull: false,
             validate:{
                 isNumeric: true,
                 min:1
-            }
+            },
         },
+        payMethod:{
+            type:DataTypes.TEXT,
+            allowNull: true,
+        }
+        //? Association with wichList in relationsModels.js N:N
+        //? Association with sellings in relationsModels.js N:N
     })
 }

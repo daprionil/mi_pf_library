@@ -30,6 +30,7 @@ module.exports = function(database){
             }
         },
         language:{
+            //? Association with Language in relationsModels.js 1:N
             type:DataTypes.INTEGER,
             allowNull:false,
             validate:{
@@ -52,7 +53,8 @@ module.exports = function(database){
                 isBefore: new Date().toISOString()
             }
         },
-        countryPublication:{//HIDE IN VIEW
+        countryPublication:{
+            //? Association with Language in relationsModels.js 1:N
             type: DataTypes.INTEGER,
             allowNull: false,
             validate:{
@@ -64,7 +66,7 @@ module.exports = function(database){
             type: DataTypes.STRING(50),
             allowNull: false,
             validate:{
-                min:2,
+                len:[2,50],
                 notEmpty: true,
             }
         },
@@ -86,14 +88,6 @@ module.exports = function(database){
                 notEmpty:true,
             }
         },
-        reviews:{
-            type: DataTypes.ARRAY(DataTypes.UUID),
-            allowNull: false,
-            validate:{
-                isUUID: 4,
-                notEmpty:true,
-            }
-        },
         sellings:{
             type: DataTypes.ARRAY(DataTypes.INTEGER),
             allowNull:false,
@@ -102,5 +96,7 @@ module.exports = function(database){
                 notEmpty:true,
             }
         }
+        //? Association with BookCategory in relationsModels.js N:N
+        //? Association with BookReviews in relationsModels.js N:N
     },{timestamps: false});
 };

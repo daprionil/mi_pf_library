@@ -11,14 +11,14 @@ module.exports = function(database){
                 //! Clear THIS validation
                 this.setDataValue('IdReview',value ?? generateIdUUID());
             }
-        },/* 
+        },
         IdUser:{
             type: DataTypes.UUID,
             allowNull: false,
             validate:{
                 isUUID: 4
             }
-        }, */
+        },
         IdBook:{
             type: DataTypes.UUID,
             allowNull: false,
