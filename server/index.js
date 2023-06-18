@@ -92,8 +92,6 @@ server.use('/',rootRouter);
                     credentials:'eso'
                 })
             });
-
-            console.log(userCreated.dataValues);
             
             //* Create Reviews
             await db.models.Review.create({
