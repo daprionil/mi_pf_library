@@ -54,7 +54,7 @@ module.exports = function(database){
             }
         },
         countryPublication:{
-            //? Association with Language in relationsModels.js 1:N
+            //? Association with country in relationsModels.js 1:N
             type: DataTypes.INTEGER,
             allowNull: false,
             validate:{
