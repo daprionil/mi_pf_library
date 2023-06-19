@@ -87,14 +87,6 @@ module.exports = function(database){
                 max:5.0,
                 notEmpty:true,
             }
-        },
-        sellings:{
-            type: DataTypes.ARRAY(DataTypes.INTEGER),
-            allowNull:false,
-            validate:{
-                isNumeric: true,
-                notEmpty:true,
-            }
         }
         //? Association with BookCategory in relationsModels.js N:N
         //? Association with BookReviews in relationsModels.js N:N

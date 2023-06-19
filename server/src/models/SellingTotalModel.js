@@ -7,8 +7,9 @@ module.exports = function(database){
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey:true,
-            set(){
-                this.setDataValue('IdSellingTotal', generateIdUUID());
+            set(value){
+                //! VALIDATE THIS AFTER validate all
+                this.setDataValue('IdSellingTotal',value ? value : generateIdUUID());
             }
         },
         IdUser:{

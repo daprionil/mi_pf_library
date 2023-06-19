@@ -1,6 +1,6 @@
 module.exports = async function(database){
-    const {Book, User, Category, Country, Review, Language} = database.models;
-    
+    const {Book, Selling, SellingTotal, User, Category, Country, Review, Language} = database.models;
+
     //! Book
     //? Book 1Countries -> Country NBooks
     //* reference with countryPublication attribute in Book model
@@ -35,4 +35,15 @@ module.exports = async function(database){
     //! Review
     User.hasMany(Review,{foreignKey:'IdUser'});
     Review.belongsTo(User,{foreignKey:'IdUser'});
+
+    //! Selling Total
+    SellingTotal.hasMany(Selling,{as:'products',foreignKey:'IdSellingTotal'});
+    Selling.belongsTo(SellingTotal,{as:'products',foreignKey:'IdSellingTotal'});
+
+    User.hasMany(SellingTotal, {foreignKey:'IdUser'});
+    SellingTotal.belongsTo(User, {foreignKey:'IdUser'});
+
+    //! Selling
+    Book.hasMany(Selling,{as:'sellings',foreignKey:'IdProduct'});
+    Selling.belongsTo(Book,{foreignKey:'IdProduct'});
 };

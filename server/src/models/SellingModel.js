@@ -7,19 +7,13 @@ module.exports = function(database){
             autoIncrement:true,
             primaryKey:true,
         },
-        IdProducto:{
+        IdProduct:{
             type: DataTypes.UUID,
             allowNull: false,
-            validate:{
-                isUUID:true
-            }
         },
         IdSellingTotal:{
             type: DataTypes.UUID,
             allowNull: false,
-            validate:{
-                isUUID:true
-            }
         }
     },{timestamps:false});
 };
